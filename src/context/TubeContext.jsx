@@ -10,6 +10,7 @@ export const TubeProvider = ({ children }) => {
     const [stations, setStations] = useState([]);
     const [lineSequences, setLineSequences] = useState({});
     const [loading, setLoading] = useState(true);
+    const [activeLines, setActiveLines] = useState([]);
 
     useEffect(() => {
         const loadInitialData = async () => {
@@ -21,7 +22,7 @@ export const TubeProvider = ({ children }) => {
                 setLines(distinctLines);
 
                 // Fetch full sequences for priority lines
-                const priorityLines = ['victoria', 'jubilee', 'central', 'bakerloo', 'northern'];
+                const priorityLines = ['victoria', 'jubilee', 'central', 'bakerloo', 'northern', 'piccadilly', 'district', 'circle'];
                 const seqMap = {};
                 const allStations = new Map();
 
@@ -52,7 +53,7 @@ export const TubeProvider = ({ children }) => {
     }, []);
 
     return (
-        <TubeContext.Provider value={{ lines, stations, lineSequences, loading }}>
+        <TubeContext.Provider value={{ lines, stations, lineSequences, loading, activeLines, setActiveLines }}>
             {children}
         </TubeContext.Provider>
     );
