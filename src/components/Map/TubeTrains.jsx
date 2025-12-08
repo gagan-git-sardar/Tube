@@ -69,17 +69,13 @@ const TubeTrains = () => {
         return () => clearInterval(interval);
     }, [lineSequences, loading]);
 
-    // Animation loop: Update positions using requestAnimationFrame
+    // Animation loop: Update positions every second
+    // We rely on CSS 'transition: transform 1s linear' to smooth the movement between these updates
     useEffect(() => {
-        let animationFrameId;
-
-        const animate = () => {
+        const interval = setInterval(() => {
             setTick(t => t + 1);
-            animationFrameId = requestAnimationFrame(animate);
-        };
-
-        animate();
-        return () => cancelAnimationFrame(animationFrameId);
+        }, 1000);
+        return () => clearInterval(interval);
     }, []);
 
     // Calculate current positions
@@ -92,8 +88,6 @@ const TubeTrains = () => {
 
         const avgTravelTime = 150;
         let progress = 1 - (currentTTL / avgTravelTime);
-        // Linear interpolation is okay, but easing is better? 
-        // For trains, constant speed (linear) is actually more realistic than ease-in-out between stations.
         progress = Math.max(0, Math.min(1, progress));
 
         const lat = train.startLat + (train.endLat - train.startLat) * progress;

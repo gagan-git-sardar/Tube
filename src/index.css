@@ -5,3 +5,7 @@ body {
   color: #fff;
   font-family: 'Inter', sans-serif;
 }
+
+.train-icon-container {
+  transition: transform 1s linear;
+}
