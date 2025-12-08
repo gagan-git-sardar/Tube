@@ -22,7 +22,11 @@ export const TubeProvider = ({ children }) => {
                 setLines(distinctLines);
 
                 // Fetch full sequences for priority lines
-                const priorityLines = ['victoria', 'jubilee', 'central', 'bakerloo', 'northern', 'piccadilly', 'district', 'circle'];
+                const priorityLines = [
+                    'bakerloo', 'central', 'circle', 'district', 'hammersmith-city',
+                    'jubilee', 'metropolitan', 'northern', 'piccadilly', 'victoria',
+                    'waterloo-city', 'dlr', 'elizabeth', 'london-overground'
+                ];
                 const seqMap = {};
                 const allStations = new Map();
 

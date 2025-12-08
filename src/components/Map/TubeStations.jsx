@@ -27,13 +27,13 @@ const TubeStations = () => {
                 <CircleMarker
                     key={station.id}
                     center={[station.lat, station.lon]}
-                    radius={isRelevant ? 4 : 2}
+                    radius={isRelevant ? (zoomLevel > 13 ? 5 : 3) : 1.5} // Responsive radius
                     pathOptions={{
-                        color: '#fff',
-                        fillColor: '#111',
-                        fillOpacity: isRelevant ? 0.9 : 0.2,
-                        weight: 1,
-                        opacity: isRelevant ? 1 : 0.2
+                        color: '#000', // Black border
+                        weight: 2,
+                        fillColor: '#fff', // White fill (Classic Metro Style)
+                        fillOpacity: 1,
+                        opacity: isRelevant ? 1 : 0.3
                     }}
                     eventHandlers={{
                         click: (e) => {

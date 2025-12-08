@@ -17,7 +17,10 @@ const getLineColor = (id) => {
         northern: '#000000',
         piccadilly: '#003688',
         victoria: '#0098D4',
-        waterloo_city: '#95CDBA'
+        waterloo_city: '#95CDBA',
+        dlr: '#00AFAD',
+        elizabeth: '#6950a1',
+        london_overground: '#ef7b10'
     };
     return colors[id.replace('-', '_')] || '#666';
 };
