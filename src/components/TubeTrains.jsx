@@ -84,7 +84,7 @@ function TubeTrains({ routes, visible }) {
           const startProgress = i / trainsForThisRoute + Math.random() * 0.1;
 
           // Vary speed based on position (some faster, some slower) - SLOWER speeds
-          const baseSpeed = 0.00001 + Math.random() * 0.00008;
+          const baseSpeed = 0.00001 + Math.random() * 0.00003;
 
           trains.push({
             id: `${line.lineId}-${routeIdx}-${i}`,
