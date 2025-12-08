@@ -7,12 +7,17 @@ import { LINE_NAMES, TFL_COLORS } from '../services/tflApi';
 function createTrainIcon(color) {
   return L.divIcon({
     html: `<svg width="32" height="20" viewBox="0 0 32 20">
-      <rect x="1" y="3" width="30" height="14" rx="3" fill="${color}" stroke="#fff" stroke-width="1.5"/>
-      <rect x="4" y="6" width="6" height="5" rx="1" fill="#fff"/>
-      <rect x="13" y="6" width="6" height="5" rx="1" fill="#fff"/>
-      <rect x="22" y="6" width="6" height="5" rx="1" fill="#fff"/>
-      <circle cx="8" cy="17" r="2" fill="#333"/>
-      <circle cx="24" cy="17" r="2" fill="#333"/>
+      <!-- Main body with rounded roof effect -->
+      <path d="M1,6 Q16,3 31,6 L31,16 Q16,16 1,16 Z" fill="${color}" stroke="#333" stroke-width="1"/>
+      <!-- Roof highlight to suggest cylinder shape -->
+      <path d="M2,6 Q16,4 30,6 L30,9 L2,9 Z" fill="#ffffff" fill-opacity="0.3"/>
+      <!-- Windows -->
+      <rect x="4" y="9" width="5" height="4" rx="1" fill="#cceeff"/>
+      <rect x="11" y="9" width="10" height="4" rx="1" fill="#cceeff"/>
+      <rect x="23" y="9" width="5" height="4" rx="1" fill="#cceeff"/>
+      <!-- Doors (vertical lines) -->
+      <path d="M10,6 L10,16" stroke="#333" stroke-width="1" opacity="0.5"/>
+      <path d="M22,6 L22,16" stroke="#333" stroke-width="1" opacity="0.5"/>
     </svg>`,
     className: 'train-icon',
     iconSize: [32, 20],
