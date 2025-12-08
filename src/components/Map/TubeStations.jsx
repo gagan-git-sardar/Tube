@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { CircleMarker, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import { useTubeData } from '../../context/TubeContext';
+import { getStationUsage } from '../../data/stationData';
 
 const TubeStations = () => {
     const { stations, activeLines, setActiveLines } = useTubeData();
@@ -23,14 +24,22 @@ const TubeStations = () => {
             const isRelevant = activeLines.length === 0 ||
                 (station.lineIds && station.lineIds.some(id => activeLines.includes(id)));
 
+            // Calculate size based on usage
+            const usage = getStationUsage(station.name);
+            // Scale: Min 3, Max 10 (at zoom 13). Adjust based on zoom.
+            // Max usage is around 300,000.
+            const sizeFactor = Math.min(10, Math.max(3, 3 + (usage / 300000) * 10));
+
+            const radius = isRelevant ? (zoomLevel > 12 ? sizeFactor * (zoomLevel / 12) : sizeFactor * 0.6) : 1.5;
+
             return (
                 <CircleMarker
                     key={station.id}
                     center={[station.lat, station.lon]}
-                    radius={isRelevant ? (zoomLevel > 13 ? 5 : 3) : 1.5} // Responsive radius
+                    radius={radius}
                     pathOptions={{
                         color: '#000', // Black border
-                        weight: 2,
+                        weight: isRelevant ? 2 : 1,
                         fillColor: '#fff', // White fill (Classic Metro Style)
                         fillOpacity: 1,
                         opacity: isRelevant ? 1 : 0.3

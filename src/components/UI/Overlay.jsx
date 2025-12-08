@@ -19,13 +19,18 @@ const Overlay = () => {
             <p style={{ margin: '0 0 15px 0', fontSize: '0.9rem', color: '#ccc' }}>Real-time train positions via TfL Open Data</p>
 
             <div style={{ fontSize: '0.8rem' }}>
-                <h3 style={{ margin: '0 0 5px 0', fontSize: '0.9rem' }}>Live Lines</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                    <LineBadge color="#0098D4" name="Victoria" />
-                    <LineBadge color="#A0A5A9" name="Jubilee" />
-                    <LineBadge color="#E32017" name="Central" />
-                    <LineBadge color="#B36305" name="Bakerloo" />
-                    <LineBadge color="#000000" name="Northern" />
+                <div style={{ fontSize: '0.8rem' }}>
+                    <h3 style={{ margin: '0 0 5px 0', fontSize: '0.9rem' }}>Network Status</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ width: 10, height: 10, background: '#00ff00', borderRadius: '50%', boxShadow: '0 0 5px #00ff00' }}></div>
+                        <span>All 14 Lines Active</span>
+                    </div>
+                    <p style={{ margin: '5px 0', fontSize: '0.75rem', color: '#aaa' }}>
+                        Tube, DLR, Elizabeth, Overground
+                    </p>
+                    <p style={{ margin: '10px 0 0 0', fontSize: '0.75rem', color: '#888' }}>
+                        Station sizes reflect weekday ridership volume.
+                    </p>
                 </div>
             </div>
         </div>
