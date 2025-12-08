@@ -84,7 +84,7 @@ function TubeTrains({ routes, visible }) {
           const startProgress = i / trainsForThisRoute + Math.random() * 0.1;
 
           // Vary speed based on position (some faster, some slower) - SLOWER speeds
-          const baseSpeed = 0.00005 + Math.random() * 0.00008;
+          const baseSpeed = 0.00001 + Math.random() * 0.00008;
 
           trains.push({
             id: `${line.lineId}-${routeIdx}-${i}`,
@@ -110,8 +110,7 @@ function TubeTrains({ routes, visible }) {
       const marker = L.marker(pos, { icon, zIndexOffset: 1000 });
 
       marker.bindTooltip(
-        `<b style="color:${train.color}">${
-          LINE_NAMES[train.lineId] || train.lineId
+        `<b style="color:${train.color}">${LINE_NAMES[train.lineId] || train.lineId
         }</b><br>In Service`,
         { direction: 'top', offset: [0, -10] },
       );
