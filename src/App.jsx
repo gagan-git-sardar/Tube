@@ -5,6 +5,7 @@ import ZoomAwareStationMarkers from './components/StationMarkers';
 import AnimatedRoutes from './components/AnimatedRoutes';
 import TubeTrains from './components/TubeTrains';
 import Legend from './components/Legend';
+import StationLegend from './components/StationLegend';
 import { getAllTubeData } from './services/tflApi';
 
 // London center coordinates
@@ -191,7 +192,12 @@ function App() {
       </MapContainer>
 
       {/* Legend */}
-      {phase !== PHASES.LOADING && <Legend />}
+      {phase !== PHASES.LOADING && (
+        <>
+          <Legend />
+          <StationLegend />
+        </>
+      )}
     </div>
   );
 }
